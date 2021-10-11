@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userDetalis</title>
+    <style>
+        div {
+            width: 200px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label>Name :</label>
+        <input type="text" id="name"/><br/><br/><br/>
+        <label>Phone :</label>
+        <input type="number" id="number"/><br/><br/><br/>
+         <button  id="sub" onclick="submit()">Submit</button>
+    </div><br/><br/>
+
+    <div id="result">
+
+    </div>
+    <script>
+        function submit(){
+            const name = document.getElementById("name").value;
+          const number =document.getElementById("number").value;
+
+          const result = document.getElementById("result");
+          result.style.border = "1px solid black";
+
+          const div = document.createElement("div");
+          
+          const h1 = document.createElement("h3");
+          h1.textContent = "Name :"+name;
+
+          const btnShow = document.createElement("button");
+          btnShow.textContent = "show";
+          btnShow.addEventListener("click",numberShow);
+
+          const h2 = document.createElement("h3");
+          h2.textContent = number;
+          h2.hidden = true;
+
+          const btnHidden = document.createElement("button");
+          btnHidden.textContent = "Hidden";
+           btnHidden.addEventListener("click",numberShow);
+
+          div.append(h1,btnShow,btnHidden,h2);
+           result.append(div);
+
+           document.getElementById('name').value = null;
+           document.getElementById('number').value = null;
+
+        }
+
+        function numberShow(){
+            let number = event.target;
+            let a = number.textContent.length;
+            if(a == 6){
+                event.target.parentNode.childNodes[3].hidden = true; 
+            }
+            else {
+                event.target.parentNode.childNodes[3].hidden =false;
+            }    
+
+        }
+
+    </script>
+</body>
+</html>
